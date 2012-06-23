@@ -25,7 +25,7 @@ var SipHash = (function() {
         a.h = a2.h; a.l = a2.l;
     }
 
-    function sipcompress(v0, v1, v2, v3) {
+    function _compress(v0, v1, v2, v3) {
         _add(v0, v1);
         _add(v2, v3);
         _rotl(v1, 13);
@@ -60,8 +60,8 @@ var SipHash = (function() {
                    l: m.charCodeAt(mp + 3) << 24 | m.charCodeAt(mp + 2) << 16 |
                       m.charCodeAt(mp + 1) << 8  | m.charCodeAt(mp) };
             _xor(v3, mi);
-            sipcompress(v0, v1, v2, v3);
-            sipcompress(v0, v1, v2, v3);
+            _compress(v0, v1, v2, v3);
+            _compress(v0, v1, v2, v3);
             _xor(v0, mi);
             mp += 8;
         }
@@ -76,14 +76,14 @@ var SipHash = (function() {
         mi = { h: buf[7] << 24 | buf[6] << 16 | buf[5] << 8 | buf[4],
                l: buf[3] << 24 | buf[2] << 16 | buf[1] << 8 | buf[0] };
        _xor(v3, mi);
-       sipcompress(v0, v1, v2, v3);
-       sipcompress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
        _xor(v0, mi);
        _xor(v2, { h: 0, l: 0xff });
-       sipcompress(v0, v1, v2, v3);
-       sipcompress(v0, v1, v2, v3);
-       sipcompress(v0, v1, v2, v3);
-       sipcompress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
+       _compress(v0, v1, v2, v3);
 
        var h = v0;
        _xor(h, v1);
