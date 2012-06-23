@@ -2,7 +2,7 @@
 var SipHash = (function() {
     function _add(a, b) {
         var rl = a.l + b.l;
-        var a2 = { h: (a.h + b.h + (rl / 2 >>> 31)) >>> 0,
+        var a2 = { h: a.h + b.h + (rl / 2 >>> 31) >>> 0,
                    l: rl >>> 0 };
         a.h = a2.h; a.l = a2.l;
     }
@@ -56,9 +56,9 @@ var SipHash = (function() {
         _xor(v3, { h: 0x74656462, l: 0x79746573 });
         while (mp < ml8) {
             mi = { h: m.charCodeAt(mp + 7) << 24 | m.charCodeAt(mp + 6) << 16 |
-                      m.charCodeAt(mp + 5) << 8  | m.charCodeAt(mp + 4),
+                      m.charCodeAt(mp + 5) <<  8 | m.charCodeAt(mp + 4),
                    l: m.charCodeAt(mp + 3) << 24 | m.charCodeAt(mp + 2) << 16 |
-                      m.charCodeAt(mp + 1) << 8  | m.charCodeAt(mp) };
+                      m.charCodeAt(mp + 1) <<  8 | m.charCodeAt(mp) };
             _xor(v3, mi);
             _compress(v0, v1, v2, v3);
             _compress(v0, v1, v2, v3);
@@ -71,7 +71,7 @@ var SipHash = (function() {
             buf[ic++] = m.charCodeAt(mp++);
         }
         while (ic < 7) {
-            buf[ic++] = 0
+            buf[ic++] = 0;
         }
         mi = { h: buf[7] << 24 | buf[6] << 16 | buf[5] << 8 | buf[4],
                l: buf[3] << 24 | buf[2] << 16 | buf[1] << 8 | buf[0] };
