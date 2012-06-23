@@ -13,6 +13,9 @@ A pure Javascript implementation of
 Usage:
 ------
 
-    SipHash.hash([k0, k1, k2, k3], <message>);
-    SipHash.hash_hex([k0, k1, k2, k3], <message>);
-    SipHash.string16_to_key(<16 characters string>);
+```javascript
+var siphash = require("siphash");
+var key = siphash.string16_to_key("0123456789ABCDEF")
+var message = "Short test message";
+var hash = siphash.hash_hex(key, message);
+```

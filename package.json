@@ -1,0 +1,15 @@
+{
+  "author": "Frank Denis <j at pureftpd dot org>",
+  "bugs": { "url": "https://github.com/jedisct1/siphash-js/issues" },
+  "description": "SipHash-2-4 fast short-input pseudo-random function",
+  "homepage": "https://github.com/jedisct1/siphash-js",
+  "keywords": [ "prf", "hash", "crypto" ],
+  "license": "Public Domain",
+  "main": "index.js",
+  "name": "siphash",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedisct1/siphash-js.git"
+  },
+  "version": "1.0.0"
+}
