@@ -6,6 +6,6 @@ A Javascript implementation of
 
 Usage:
 
-    SipHash.hash(<16 bytes key>, <message>);
-    SipHash.hash_hex(<16 bytes key>, <message>);
-    
+    SipHash.hash([k0, k1, k2, k3], <message>);
+    SipHash.hash_hex([k0, k1, k2, k3], <message>);
+
