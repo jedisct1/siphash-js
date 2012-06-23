@@ -25,10 +25,6 @@ var SipHash = (function() {
         a.h = a2.h; a.l = a2.l;
     }
 
-    function _clone(a) {
-        return { h: a.h, l: a.l };
-    }
-
     function sipcompress(v0, v1, v2, v3) {
         _add(v0, v1);
         _add(v2, v3);
@@ -49,18 +45,11 @@ var SipHash = (function() {
     function hash(key, m) {
         var k0 = { h: key[1], l: key[0] };
         var k1 = { h: key[3], l: key[2] };
-        var v0 = _clone(k0);
-        var v1 = _clone(k1);
-        var v2 = _clone(k0);
-        var v3 = _clone(k1);
-        var mi;
-        var mp = 0;
-        var ml = m.length;
-        var ml8 = ml - 8;
+        var v0 = { h: k0.h, l: k0.l }, v2 = k0;
+        var v1 = { h: k1.h, l: k1.l }, v3 = k1;
+        var mi, mp = 0, ml = m.length, ml8 = ml - 8;
         var buf = new Uint8Array(new ArrayBuffer(8));
-        var h;
 
-        buf[7] = ml;
         _xor(v0, { h: 0x736f6d65, l: 0x70736575 });
         _xor(v1, { h: 0x646f7261, l: 0x6e646f6d });
         _xor(v2, { h: 0x6c796765, l: 0x6e657261 });
@@ -76,6 +65,7 @@ var SipHash = (function() {
             _xor(v0, mi);
             mp += 8;
         }
+        buf[7] = ml;
         var ic = 0;
         while (mp < ml) {
             buf[ic++] = m.charCodeAt(mp++);
@@ -84,7 +74,7 @@ var SipHash = (function() {
             buf[ic++] = 0
         }
         mi = { h: buf[7] << 24 | buf[6] << 16 | buf[5] << 8 | buf[4],
-              l: buf[3] << 24 | buf[2] << 16 | buf[1] << 8  | buf[0] };
+               l: buf[3] << 24 | buf[2] << 16 | buf[1] << 8 | buf[0] };
        _xor(v3, mi);
        sipcompress(v0, v1, v2, v3);
        sipcompress(v0, v1, v2, v3);
@@ -95,7 +85,7 @@ var SipHash = (function() {
        sipcompress(v0, v1, v2, v3);
        sipcompress(v0, v1, v2, v3);
 
-       h = v0;
+       var h = v0;
        _xor(h, v1);
        _xor(h, v2);
        _xor(h, v3);
