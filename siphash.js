@@ -93,6 +93,18 @@ var SipHash = (function() {
        return h;
     }
 
+    function _get_int(a, offset) {
+        return (a.charCodeAt(offset + 3) << 24 |
+                a.charCodeAt(offset + 2) << 16 |
+                a.charCodeAt(offset + 1) << 8 |
+                a.charCodeAt(offset)) >>> 0;
+    }
+
+    function string16_to_key(a) {
+        return [_get_int(a, 0), _get_int(a, 4),
+                _get_int(a, 8), _get_int(a, 12)];
+    }
+
     function hash_hex(key, m) {
         var r = hash(key, m);
         return ("0000000" + r.h.toString(16)).substr(-8) +
@@ -100,6 +112,7 @@ var SipHash = (function() {
     }
 
     return {
+        string16_to_key: string16_to_key,
         hash: hash,
         hash_hex: hash_hex
     };
