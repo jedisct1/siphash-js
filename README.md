@@ -7,7 +7,7 @@ A pure Javascript implementation of
 > SipHash is a family of pseudorandom functions optimized for short
 > inputs. Target applications include network traffic authentication and
 > hash-table lookups protected against hash-flooding denial-of-service
-> attacks. SipHash has well-dened security goals and competitive
+> attacks. SipHash has well-defined security goals and competitive
 > performance.
 
 Usage:
