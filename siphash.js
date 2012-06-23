@@ -43,8 +43,8 @@ var SipHash = (function() {
     }
 
     function hash(key, m) {
-        var k0 = { h: key[1], l: key[0] };
-        var k1 = { h: key[3], l: key[2] };
+        var k0 = { h: key[1] >>> 0, l: key[0] >>> 0 };
+        var k1 = { h: key[3] >>> 0, l: key[2] >>> 0 };
         var v0 = { h: k0.h, l: k0.l }, v2 = k0;
         var v1 = { h: k1.h, l: k1.l }, v3 = k1;
         var mi, mp = 0, ml = m.length, ml8 = ml - 8;
