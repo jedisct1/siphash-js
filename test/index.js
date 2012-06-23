@@ -612,3 +612,21 @@ for (var i = 0, j = vectors.length; i < j; i++) {
                  "Key: [" + key + "] Message: [" + message + "]" + " " +
                  "Found: [" + found + "] Expected: [" + expected + "]");
 }
+
+key = [ 0xdeadbeef, 0xcafebabe, 0x8badf00d, 0x1badb002 ];
+message = "Short test message";
+found = siphash.hash_hex(key, message);
+expected = "f2e893485bd3bade";
+assert.equal(found, expected);
+
+key = [ 0xdeadbeef, 0xcafebabe, 0x8badf00d, 0x1badb002 ];
+message = "Short test message";
+found = siphash.hash(key, message);
+expected = { h: 4075328328, l: 1540602590 };
+assert.equal(found.h, expected.h);
+assert.equal(found.l, expected.l);
+
+key = siphash.string16_to_key("0123456789ABCDEF");
+message = "Short test message";
+found = siphash.hash_uint(key, message);
+assert.equal(found, 3323740134809132);
