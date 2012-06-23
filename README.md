@@ -17,7 +17,7 @@ Usage:
 var siphash = require("siphash"),
     key = siphash.string16_to_key("0123456789ABCDEF"),
     message = "Short test message",
-    hash = siphash.hash_hex(key, message);
+    hash_hex = siphash.hash_hex(key, message);
 ```
 
 A key is an array of 4 integers, and each of them will be clamped to
@@ -25,5 +25,30 @@ A key is an array of 4 integers, and each of them will be clamped to
 For a random key, just generate 4 random integers instead of calling
 `string16_to_key()`.
 
-The raw 64-bit hash can be obtained with `hash(key, message)` instead of
-`hash_hex(key, message)`.
+```javascript
+var siphash = require("siphash"),
+    key = [ 0xdeadbeef, 0xcafebabe, 0x8badf00d, 0x1badb002 ],
+    message = "Short test message",
+    hash_hex = siphash.hash_hex(key, message);
+```
+
+The 64-bit hash can also be obtained as two 32-bit values with
+`hash(key, message)`:
+
+```javascript
+var siphash = require("siphash"),
+    key = [ 0xdeadbeef, 0xcafebabe, 0x8badf00d, 0x1badb002 ],
+    message = "Short test message",
+    hash = siphash.hash(key, message),
+    hash_msb = hash.h,
+    hash_lsb = hash.l;
+```
+
+A 53-bit unsigned integer can be obtained with `hash_uint(key, message)`:
+
+```javascript
+var siphash = require("siphash"),
+    key = siphash.string16_to_key("0123456789ABCDEF"),
+    message = "Short test message",
+    index = siphash.hash_uint(key, message);
+```
