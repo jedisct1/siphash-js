@@ -14,8 +14,8 @@ Usage:
 ------
 
 ```javascript
-var siphash = require("siphash");
-var key = siphash.string16_to_key("0123456789ABCDEF")
-var message = "Short test message";
-var hash = siphash.hash_hex(key, message);
+var siphash = require("siphash"),
+    key = siphash.string16_to_key("0123456789ABCDEF"),
+    message = "Short test message",
+    hash = siphash.hash_hex(key, message);
 ```
