@@ -2,7 +2,7 @@
 var SipHash = (function() {
     function _add(a, b) {
         var rl = a.l + b.l;
-        var a2 = { h: (a.h + b.h + (rl > 0xffffffff)) >>> 0,
+        var a2 = { h: (a.h + b.h + (rl / 2 >>> 31)) >>> 0,
                    l: rl >>> 0 };
         a.h = a2.h; a.l = a2.l;
     }
