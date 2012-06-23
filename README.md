@@ -19,3 +19,11 @@ var siphash = require("siphash"),
     message = "Short test message",
     hash = siphash.hash_hex(key, message);
 ```
+
+A key is an array of 4 integers, and each of them will be clamped to
+32 bits in order to build a 128-bit key.
+For a random key, just generate 4 random integers instead of calling
+`string16_to_key()`.
+
+The raw 64-bit hash can be obtained with `hash(key, message)` instead of
+`hash_hex(key, message)`.
