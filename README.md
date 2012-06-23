@@ -10,8 +10,17 @@ A pure Javascript implementation of
 > attacks. SipHash has well-defined security goals and competitive
 > performance.
 
-Usage:
-------
+Installation
+------------
+
+Server-side installation (nodejs):
+
+    $ npm install siphash
+
+Browser-side: use `lib/siphash.min.js`.
+
+Usage
+-----
 
 ```javascript
 var siphash = require("siphash"),
