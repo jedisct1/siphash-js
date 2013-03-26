@@ -1,1 +1,1 @@
-require('./lib/siphash');
+exports = module.exports = require('./lib/siphash');
