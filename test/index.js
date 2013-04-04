@@ -611,6 +611,19 @@ for (var i = 0, j = vectors.length; i < j; i++) {
     assert.equal(found, expected,
                  "Key: [" + key + "] Message: [" + message + "]" + " " +
                  "Found: [" + found + "] Expected: [" + expected + "]");
+
+found = siphash.hash(siphash.string16_to_key(key), message);
+var m =
+((found.l >>> 0) & 0xff) + "," +
+((found.l >>> 8) & 0xff) + "," +
+((found.l >>> 16) & 0xff) + "," +
+((found.l >>> 24) & 0xff) + "," +
+((found.h >>> 0) & 0xff) + "," +
+((found.h >>> 8) & 0xff) + "," +
+((found.h >>> 16) & 0xff) + "," +
+((found.h >>> 24) & 0xff);
+
+console.log('{<<"' + key + '">>, <<"' + message + '">>, <<' + m + '>>},')
 }
 
 key = [ 0xdeadbeef, 0xcafebabe, 0x8badf00d, 0x1badb002 ];
