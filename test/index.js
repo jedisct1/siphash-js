@@ -643,3 +643,34 @@ key = siphash.string16_to_key("0123456789ABCDEF");
 message = "Short test message";
 found = siphash.hash_uint(key, message);
 assert.equal(found, 3323740134809132);
+
+var siphash_double = require('../lib/siphash-double'),
+    assert = require('assert'),
+    vector, key, message, expected, found,
+    vectors = [
+  ["aON1dHrq90SbG8Hx",
+   "v7LyiwuCrB7EgAibPve6Yg2gLmggxE6j7ocR37EudrH_P9XX2rQK",
+   "999b16aff116038a8dcd9565ce8c87ac"]
+];
+
+for (var i = 0, j = vectors.length; i < j; i++) {
+    vector = vectors[i];
+    key = vector[0], message = vector[1], expected = vector[2];
+    found = siphash_double.hash_hex(siphash.string16_to_key(key), message);
+    assert.equal(found, expected,
+                 "Key: [" + key + "] Message: [" + message + "]" + " " +
+                 "Found: [" + found + "] Expected: [" + expected + "]");
+
+found = siphash.hash(siphash.string16_to_key(key), message);
+var m =
+((found.l >>> 0) & 0xff) + "," +
+((found.l >>> 8) & 0xff) + "," +
+((found.l >>> 16) & 0xff) + "," +
+((found.l >>> 24) & 0xff) + "," +
+((found.h >>> 0) & 0xff) + "," +
+((found.h >>> 8) & 0xff) + "," +
+((found.h >>> 16) & 0xff) + "," +
+((found.h >>> 24) & 0xff);
+
+console.log('{<<"' + key + '">>, <<"' + message + '">>, <<' + m + '>>},')
+}
