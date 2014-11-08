@@ -17,7 +17,8 @@ Server-side installation (nodejs):
 
     $ npm install siphash
 
-Browser-side: use `lib/siphash.min.js`.
+Browser-side/single-line minified version: use
+[lib/siphash.js.min](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash.js.min).
 
 Usage
 -----
@@ -61,3 +62,10 @@ var siphash = require("siphash"),
     message = "Short test message",
     index = siphash.hash_uint(key, message);
 ```
+
+SipHash-double
+--------------
+
+Although not part of the module, an implementation of SipHash with
+128-bit output is also available:
+[siphash-double.js](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash-double.js.min)
