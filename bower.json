@@ -1,0 +1,26 @@
+{
+  "name": "siphash",
+  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jedisct1/siphash-js",
+  "authors": [
+    "Frank Denis <bower@pureftpd.org>"
+  ],
+  "description": "A pure Javascript implementation of SipHash-2-4",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "hash",
+    "crypto",
+    "siphash"
+  ],
+  "license": "Public domain",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
