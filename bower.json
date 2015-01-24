@@ -8,7 +8,7 @@
   ],
   "description": "A pure Javascript implementation of SipHash-2-4",
   "moduleType": [
-    "amd"
+    "node", "globals"
   ],
   "keywords": [
     "hash",
