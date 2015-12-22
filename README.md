@@ -28,7 +28,7 @@ Usage
 
 ```javascript
 var siphash = require("siphash"),
-    key = siphash.string16_to_key("0123456789ABCDEF"),
+    key = siphash.string16_to_key("This is the key!"),
     message = "Short test message",
     hash_hex = siphash.hash_hex(key, message);
 ```
