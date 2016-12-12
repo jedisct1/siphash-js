@@ -10,6 +10,8 @@ A pure Javascript implementation of
 > attacks. SipHash has well-defined security goals and competitive
 > performance.
 
+This package also includes implementations of SipHash-1-3, SipHash128, and SipHash128-1-3.
+
 Installation
 ------------
 
