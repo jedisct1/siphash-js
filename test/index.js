@@ -668,3 +668,54 @@ for (var i = 0, j = vectors.length; i < j; i++) {
 
   console.log('{<<"' + key + '">>, <<"' + message + '">>, <<' + m + '>>},')
 }
+
+var siphash13 = require('../lib/siphash13'), assert = require('assert'), vector,
+    key, message, expected, found,
+    vectors = [[
+      'aON1dHrq90SbG8Hx',
+      'v7LyiwuCrB7EgAibPve6Yg2gLmggxE6j7ocR37EudrH_P9XX2rQK', '884fe2d407e90f36'
+    ]];
+
+for (var i = 0, j = vectors.length; i < j; i++) {
+  vector = vectors[i];
+  key = vector[0], message = vector[1], expected = vector[2];
+  found = siphash13.hash_hex(siphash.string16_to_key(key), message);
+  assert.equal(
+      found, expected, 'Key: [' + key + '] Message: [' + message + ']' +
+          ' ' +
+          'Found: [' + found + '] Expected: [' + expected + ']');
+
+  found = siphash.hash(siphash.string16_to_key(key), message);
+  var m = ((found.l >>> 0) & 0xff) + ',' + ((found.l >>> 8) & 0xff) + ',' +
+      ((found.l >>> 16) & 0xff) + ',' + ((found.l >>> 24) & 0xff) + ',' +
+      ((found.h >>> 0) & 0xff) + ',' + ((found.h >>> 8) & 0xff) + ',' +
+      ((found.h >>> 16) & 0xff) + ',' + ((found.h >>> 24) & 0xff);
+
+  console.log('{<<"' + key + '">>, <<"' + message + '">>, <<' + m + '>>},')
+}
+
+var siphash13_double = require('../lib/siphash13-double'),
+    assert = require('assert'), vector, key, message, expected, found,
+    vectors = [[
+      'aON1dHrq90SbG8Hx',
+      'v7LyiwuCrB7EgAibPve6Yg2gLmggxE6j7ocR37EudrH_P9XX2rQK',
+      '61c10e46c4b584a74278452a1ab53ce6'
+    ]];
+
+for (var i = 0, j = vectors.length; i < j; i++) {
+  vector = vectors[i];
+  key = vector[0], message = vector[1], expected = vector[2];
+  found = siphash13_double.hash_hex(siphash.string16_to_key(key), message);
+  assert.equal(
+      found, expected, 'Key: [' + key + '] Message: [' + message + ']' +
+          ' ' +
+          'Found: [' + found + '] Expected: [' + expected + ']');
+
+  found = siphash.hash(siphash.string16_to_key(key), message);
+  var m = ((found.l >>> 0) & 0xff) + ',' + ((found.l >>> 8) & 0xff) + ',' +
+      ((found.l >>> 16) & 0xff) + ',' + ((found.l >>> 24) & 0xff) + ',' +
+      ((found.h >>> 0) & 0xff) + ',' + ((found.h >>> 8) & 0xff) + ',' +
+      ((found.h >>> 16) & 0xff) + ',' + ((found.h >>> 24) & 0xff);
+
+  console.log('{<<"' + key + '">>, <<"' + message + '">>, <<' + m + '>>},')
+}

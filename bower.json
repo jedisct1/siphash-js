@@ -15,7 +15,7 @@
     "crypto",
     "siphash"
   ],
-  "license": "Public domain",
+  "license": "BSD-2-Clause",
   "ignore": [
     "**/.*",
     "node_modules",

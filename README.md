@@ -66,9 +66,19 @@ var siphash = require("siphash"),
     index = siphash.hash_uint(key, message);
 ```
 
+SipHash-1-3
+-----------
+SipHash-1-3 is a faster variant of SipHash-2-4 with fewer rounds, which is still believed to be secure
+enough for typical uses. This variant is available here:
+[siphash13.js](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash13.js.min)
+
+
 SipHash-double
 --------------
 
 Although not part of the module, an implementation of SipHash with
 128-bit output is also available:
 [siphash-double.js](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash-double.js.min)
+
+SipHash-1-3 with a 128-bit output is also part of the package:
+[siphash13-double.js](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash13-double.js.min)
