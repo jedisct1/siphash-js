@@ -2,7 +2,7 @@ siphash.js
 ==========
 
 A pure Javascript implementation of
-[SipHash-2-4](http://131002.net/siphash/siphash.pdf)
+[SipHash](http://131002.net/siphash/siphash.pdf)
 
 > SipHash is a family of pseudorandom functions optimized for short
 > inputs. Target applications include network traffic authentication and
