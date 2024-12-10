@@ -5,7 +5,11 @@
   },
   "description": "SipHash-2-4 fast short-input pseudo-random function",
   "homepage": "https://github.com/jedisct1/siphash-js",
-  "keywords": ["prf", "hash", "crypto"],
+  "keywords": [
+    "prf",
+    "hash",
+    "crypto"
+  ],
   "license": "BSD-2-Clause",
   "main": "index.js",
   "name": "siphash",
@@ -16,5 +20,5 @@
   "scripts": {
     "test": "node test/index.js"
   },
-  "version": "1.1.0"
+  "version": "1.2.0"
 }
