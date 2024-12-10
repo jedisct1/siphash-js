@@ -141,11 +141,11 @@ const SipHashDouble = (() => {
         _compress(v0, v1, v2, v3);
         _compress(v0, v1, v2, v3);
 
-        const hh = { h: v0.h, l: v0.l };
+        const hh = {h: v0.h, l: v0.l};
         _xor(hh, v1);
         _xor(hh, v2);
         _xor(hh, v3);
-        _xor(v1, { h: 0, l: 0xdd });
+        _xor(v1, {h: 0, l: 0xdd});
         _compress(v0, v1, v2, v3);
         _compress(v0, v1, v2, v3);
         _compress(v0, v1, v2, v3);
