@@ -205,5 +205,4 @@ const SipHashDouble = (() => {
     };
 })();
 
-var module = module || {},
-    exports = module.exports = SipHashDouble;
+module.exports = SipHashDouble;
