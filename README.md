@@ -21,9 +21,6 @@ Server-side installation (io.js/nodejs):
 
 Browser-side/single-line minified version: use
 [lib/siphash.js.min](https://raw.githubusercontent.com/jedisct1/siphash-js/master/lib/siphash.js.min).
-or use Bower:
-
-    $ bower install siphash
 
 Usage
 -----
